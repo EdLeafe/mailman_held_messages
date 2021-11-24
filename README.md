@@ -28,7 +28,18 @@ the script. You only have to do this once.
 
 Once the dependencies are installed, call `poetry run python held_messages.py` to run the script,
 which will process each of your lists sequentially. If there are held messages for any of your
-lists, you will be shown a list containing the subject, sender, and message ID for each message. If
-there are **any** messages that should not be discarded, answer `n` at the prompt, and the messages
-will not be touched. But if they are all spam, answer `y` and press Enter, and the messages will be
-discarded.
+lists, you will be shown a list containing the subject, sender, and message ID for each message:
+
+```
+Messages for test_list
+╭───────────────────────────────┬────────────────────────────────────────┬────────────╮
+│ Subject                       │ Sender                                 │ Message ID │
+├───────────────────────────────┼────────────────────────────────────────┼────────────┤
+│ _LOVE GETTING THE BEST DEALS? │ zsjce3ggx1pe0p7ce_no_replay@amazon.com │ 4211       │
+╰───────────────────────────────┴────────────────────────────────────────┴────────────╯
+Delete these? [y]/n
+```
+
+If there are **any** messages that should not be discarded, answer `n` at the prompt, and the
+messages will not be touched. But if they are all spam, answer `y` or just press Enter, and the messages
+will be discarded.
