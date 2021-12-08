@@ -81,12 +81,14 @@ class HeldMessageProcessor:
             self.display_output(mail_list)
 
     def display_output(self, mail_list):
-        if not self.subjects:
+        subject_count = len(self.subjects)
+        if not subject_count:
             print(f"No held messages for {mail_list}.")
             return
 
+        print()
         table = Table(
-            title=f"Messages for {mail_list}",
+            title=f"{subject_count} message{'s' if subject_count > 1 else ''} for {mail_list}",
             title_style="bold blue",
             title_justify="left",
             show_header=True,
@@ -102,7 +104,7 @@ class HeldMessageProcessor:
             table.add_row(*subj)
         Console(emoji=True).print(table, overflow="fold")
 
-        should_delete = input("Delete these? [y]/n ") or "y"
+        should_delete = input(f"Delete th{'ese' if subject_count > 1 else 'is'}? [y]/n ") or "y"
         if should_delete.lower()[0] in "yt":
             self.delete_messages(mail_list)
 
